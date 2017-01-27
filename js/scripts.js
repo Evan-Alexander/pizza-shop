@@ -15,11 +15,14 @@ $(document).ready(function() {
     $("input:checkbox[name=size]:checked").each(function(){
         var getSize = $(this).val();
         $('#order-info').append(getSize + "<br>");
-
       });
-    // $("input:checkbox[name=meat]:checked").each(function(){
-    //     var getMeat = $(this).val();
-    // $("input:checkbox[name=veggies]:checked").each(function(){
-    //     var getVeggies = $(this).val();
+    $("input:checkbox[name=meat]:checked").each(function(){
+      var getMeat = $(this).val();
+      $('#order-info').append(getMeat + "<br>");
+      });
+    $("input:checkbox[name=veg]:checked").each(function(){
+      var getVeggies = $(this).val();
+      $('#order-info').append(getVeggies + "<br>");
+      });
   });
 });
