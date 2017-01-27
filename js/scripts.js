@@ -1,38 +1,25 @@
-//business logic
-function Contact(first, last) {
-  this.firstName = first;
-  this.lastName = last;
-  this.addresses = [];
+function Pizza(big, meat, veggies) {
+  this.big = size;
+  this.meat = meat;
+  this.veggies = veggies;
 }
 
-function Address(street, city, state) {
-  this.street = street;
-  this.city = city;
-  this.state = state;
-}
+// Pizza.prototype.makePizza() {
+//   return [this.big, this.meat, this.veggies];
+// }
 
-Contact.prototype.fullName = function() {
-  return this.firstName + " " + this.lastName;
-}
 
-// user interface logic
 $(document).ready(function() {
-  $("form#new-contact").submit(function(event) {
+  $("form#order-form").submit(function(event) {
     event.preventDefault();
+    $("input:checkbox[name=size]:checked").each(function(){
+        var getSize = $(this).val();
+        $('#order-info').append(getSize + "<br>");
 
-    var inputtedFirstName = $("input#new-first-name").val();
-    var inputtedLastName = $("input#new-last-name").val();
-
-    var newContact = new Contact(inputtedFirstName, inputtedLastName);
-
-
-    $("#show-contact").show();
-    $("#show-contact h2").text(newContact.firstName);
-    $(".first-name").text(newContact.firstName);
-    $(".last-name").text(newContact.lastName);
-
-
-    $("input#new-first-name").val("");
-    $("input#new-last-name").val("");
+      });
+    // $("input:checkbox[name=meat]:checked").each(function(){
+    //     var getMeat = $(this).val();
+    // $("input:checkbox[name=veggies]:checked").each(function(){
+    //     var getVeggies = $(this).val();
   });
 });
