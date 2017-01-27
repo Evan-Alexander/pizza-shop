@@ -1,5 +1,5 @@
-# To-Do List App
-Further practice on objects.  To-do list app.
+# Pizza Order Form
+An online pizza ordering form using Javascript OOP.
 
 ## AUTHORS
 Jason Brown
