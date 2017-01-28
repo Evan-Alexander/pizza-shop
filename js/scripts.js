@@ -25,33 +25,39 @@ function Pizza(pizzaSize, meat, veggies) {
   this.veggies = veggies;
 }
 
+function PizzaPrice(smallPrice, mediumPrice, largePrice, meatPrice, vegPrice) {
+  this.smallPrice = 12;
+  this.mediumPrice = 14;
+  this.largePrice = 16;
+  this.meatPrice = 2;
+  this.vegPrice = 1;
+}
+
 Pizza.prototype.makePizza = function() {
   return this.pizzaSize + " " + this.meat + " with " + this.veggies;
 }
 
-//
-// PizzaPrice.prototype.getPrice = function() {
-//   return this.pizzaSize.price + this.veggies.price + this.meat.price;
-// }
 
+// PizzaPrice.prototype.getPrice = function() {
+//   return this.pizzaSize.price + this.meatPrice + this.vegPrice;
+// }
 
 $(document).ready(function() {
   $("form#order-form").submit(function(event) {
     event.preventDefault();
     var getSize = $("input:checkbox[name=size]:checked").val();
 
+
     var meatToppings = [];
     $("input:checkbox[name=meat]:checked").each(function(){
         var getMeat = $(this).val();
         meatToppings.push(getMeat);
-        console.log(meatToppings);
       });
 
     var vegToppings = [];
     $("input:checkbox[name=veg]:checked").each(function(){
         var getVeggies = $(this).val();
         vegToppings.push(getVeggies);
-        console.log(vegToppings);
       });
 
     var newPizza = new Pizza(getSize, meatToppings, vegToppings);
@@ -59,7 +65,6 @@ $(document).ready(function() {
 
     $('#order-info').append("<li><span>" + newPizza.makePizza() + "</span></li>");
     // $('#cost').append("<li><span>" + orderCost.getPrice() + "</span></li>");
-
 
     });
 });
