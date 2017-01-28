@@ -8,15 +8,15 @@ var pepperoni = { name: "pepperoni", price: 2 };
 var canadianBacon = { name: "canadianBacon", price: 2 };
 var sausage = { name: "sausage", price: 2 };
 
-var roastedGarlic = { name: "roastedGarlic", price: 2 };
-var arugula = { name: "arugula", price: 2 };
-var SpanishOlives = { name: "SpanishOlives", price: 2 };
-var canadianBacon = { name: "canadianBacon", price: 2 };
-var artichokeHearts = { name: "artichokeHearts", price: 2 };
-var jalepenos = { name: "jalepenos", price: 2 };
-var redOnions = { name: "redOnions", price: 2 };
-var pineapple = { name: "pineapple", price: 2 };
-var mushrooms = { name: "mushrooms", price: 2 };
+var roastedGarlic = { name: "roastedGarlic", price: 1 };
+var arugula = { name: "arugula", price: 1 };
+var SpanishOlives = { name: "SpanishOlives", price: 1 };
+var canadianBacon = { name: "canadianBacon", price: 1 };
+var artichokeHearts = { name: "artichokeHearts", price: 1 };
+var jalepenos = { name: "jalepenos", price: 1 };
+var redOnions = { name: "redOnions", price: 1 };
+var pineapple = { name: "pineapple", price: 1 };
+var mushrooms = { name: "mushrooms", price: 1 };
 
 
 function Pizza(pizzaSize, meat, veggies) {
@@ -29,6 +29,7 @@ Pizza.prototype.makePizza = function() {
   return this.pizzaSize + " " + this.meat + " with " + this.veggies;
 }
 
+//
 // PizzaPrice.prototype.getPrice = function() {
 //   return this.pizzaSize.price + this.veggies.price + this.meat.price;
 // }
