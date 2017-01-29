@@ -1,30 +1,9 @@
-// var smallPie = { name: "small", price: 12 };
-// var mediumPie = { name: "medium", price: 14 };
-// var largePie = { name: "large", price: 16 };
-//
-// var sausage = { name: "sausage", price: 2 };
-// var prosciutto = { name: "prosciutto", price: 2 };
-// var pepperoni = { name: "pepperoni", price: 2 };
-// var canadianBacon = { name: "canadianBacon", price: 2 };
-// var sausage = { name: "sausage", price: 2 };
-//
-// var roastedGarlic = { name: "roastedGarlic", price: 1 };
-// var arugula = { name: "arugula", price: 1 };
-// var SpanishOlives = { name: "olives", price: 1 };
-// var canadianBacon = { name: "canadianBacon", price: 1 };
-// var artichokeHearts = { name: "artichokeHearts", price: 1 };
-// var jalepenos = { name: "jalepenos", price: 1 };
-// var redOnions = { name: "onions", price: 1 };
-// var pineapple = { name: "pineapple", price: 1 };
-// var mushrooms = { name: "mushrooms", price: 1 };
-
-// function PizzaPrice(smallPie, mediumPie, largePie, meatPrice, vegPrice) {
-//   this.smallPrice = 12;
-//   this.mediumPrice = 14;
-//   this.largePrice = 16;
-//   this.meatPrice = 2;
-//   this.vegPrice = 1;
-// }
+//BUSINESS LOGIC
+function PizzaPrice(smallPie, mediumPie, largePie) {
+  this.smallPrice = 12;
+  this.mediumPrice = 14;
+  this.largePrice = 16;
+}
 
 function Pizza(pizzaSize, meat, veggies) {
   this.pizzaSize = pizzaSize;
@@ -37,17 +16,24 @@ Pizza.prototype.makePizza = function() {
   return this.pizzaSize + " " + this.meat + " with " + this.veggies;
 }
 
+PizzaPrice.prototype.pieSize = function(getSize) {
+  if (getSize === "small") {
+    return this.smallPrice;
+  } else if (getSize === "medium") {
+    return this.mediumPrice;
+  } else if (getSize === "large") {
+    return   this.largePrice;
+  }
+}
 
-// Meat.prototype.meatPrice = function() {
-//   return this.meat.length * 2;
-// }
-
+//UI LOGIC
 $(document).ready(function() {
   $("form#order-form").submit(function(event) {
     event.preventDefault();
+    //Retrieves size chosen
     var getSize = $("input:checkbox[name=size]:checked").val();
 
-
+    //Retrieves meat choices
     var meatToppings = [];
     $("input:checkbox[name=meat]:checked").each(function(){
         var getMeat = $(this).val();
@@ -55,6 +41,7 @@ $(document).ready(function() {
         console.log(meatToppings);
       });
 
+    //Retrieves veggie choices
     var vegToppings = [];
     $("input:checkbox[name=veg]:checked").each(function(){
         var getVeggies = $(this).val();
@@ -63,9 +50,14 @@ $(document).ready(function() {
 
     var newPizza = new Pizza(getSize, meatToppings, vegToppings);
 
+    var newCost = new PizzaPrice(getSize);
+    console.log(getSize);
+
+    //Displays pizza size with meat and veggie options
     $('#order-info').append("<li><span>" + newPizza.makePizza() + "</span></li>");
 
-    $('#cost').append("<li><span>" + "$" + parseInt( (meatToppings.length * 2) + vegToppings.length) + "</span></li>");
+    //Displays total pizza price.
+    $('#cost').append("<li><span>" + "$" + parseInt( (meatToppings.length * 2) + vegToppings.length + newCost.pieSize(getSize)) + "</span></li>");
 
     });
 });
